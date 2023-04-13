@@ -19,7 +19,7 @@ import {
     defaultSchedules,
     defaultStartsTime
 } from './updater'
-import { imageLink } from '../utility/constants'
+import { colors, imageLink } from '../utility/constants'
 
 let armsRacesGroup: ArmsRaceGroup = defaultArmsRacesGroup
 let schedules: ArmsRaceSchedule = defaultSchedules
@@ -67,7 +67,7 @@ function buildEmbed(armsRace: ArmsRace, template: ArmsRaceTemplate, isEnding: bo
         : template.start.replace('${name}', bold(armsRace.name)).replace('${tasks}', blockQuote(tasks))
 
     return new EmbedBuilder()
-        .setColor(0x0ea18c)
+        .setColor(colors.green)
         .setAuthor({
             name: 'Arms Race',
             iconURL: imageLink.armsRace1

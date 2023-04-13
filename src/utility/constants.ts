@@ -28,7 +28,16 @@ export enum TextInputStyle {
 export const imageLink = {
     armsRace1: 'https://i.imgur.com/mquyplZ.png',
     armsRace2: 'https://i.imgur.com/1S3xnYJ.png',
-    duel: 'https://i.imgur.com/QHqtzWW.png'
+    duel: 'https://i.imgur.com/QHqtzWW.png',
+    star: 'https://i.imgur.com/vNAG2e6.png'
+}
+
+export const colors = {
+    red: 0xe91a47,
+    blue: 0x0099FF,
+    purple: 0x800080,
+    green: 0x0ea18c,
+    pink: 0xA64D79
 }
 
 export const invitationLink = 'https://discord.com/api/oauth2/authorize?client_id=1090686552113434825&permissions=534723951680&scope=bot%20applications.commands'

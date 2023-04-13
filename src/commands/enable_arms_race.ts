@@ -1,7 +1,8 @@
 import { BotCommand } from './model'
-import { blockQuote, ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js'
 import { armsRaceConfig } from '../configuration/configs'
 import { getLanguage } from '../translator/translator'
+import { colors } from '../utility/constants'
 
 const command: BotCommand = {
     data: new SlashCommandBuilder()
@@ -23,7 +24,7 @@ const command: BotCommand = {
         const language = (interaction as ChatInputCommandInteraction).options.getString('language')
 
         const embed = new EmbedBuilder()
-            .setColor(0x800080)
+            .setColor(colors.purple)
             .setDescription(`Arms race reminder has been enabled on this channel.`)
             .setFooter({
                 text: `Language: ${getLanguage(language).name}`

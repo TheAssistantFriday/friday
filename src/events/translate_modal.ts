@@ -1,6 +1,7 @@
 import { BotEvent } from './model'
 import { blockQuote, bold, EmbedBuilder, Events } from 'discord.js'
 import { getLanguage, translateText } from '../translator/translator'
+import { colors } from '../utility/constants'
 
 const event: BotEvent = {
     event: Events.InteractionCreate,
@@ -19,7 +20,7 @@ const event: BotEvent = {
                 translateText(text, language.code)
                     .then(result => {
                         const embed = new EmbedBuilder()
-                            .setColor(0x0099FF)
+                            .setColor(colors.blue)
                             .setDescription(blockQuote(result.text))
                             .setFooter({
                                 text: `Translated from ${getLanguage(result.detectedLanguageCode).name} to ${language.name}.`,
@@ -30,7 +31,7 @@ const event: BotEvent = {
                     .catch(console.log)
             } else {
                 const embed = new EmbedBuilder()
-                    .setColor(0xe91a47)
+                    .setColor(colors.red)
                     .setDescription(`Language ${bold(targetLanguage)} is currently not supported.`)
                 interaction.reply({embeds: [embed], ephemeral: true})
             }

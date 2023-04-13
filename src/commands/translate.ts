@@ -2,7 +2,6 @@ import { BotCommand } from './model'
 import {
     ActionRowBuilder,
     ChatInputCommandInteraction,
-    Interaction,
     ModalBuilder,
     SlashCommandBuilder,
     TextInputBuilder

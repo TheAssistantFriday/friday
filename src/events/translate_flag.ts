@@ -3,6 +3,7 @@ import { blockQuote, EmbedBuilder, Events, hyperlink } from 'discord.js'
 import { getEmojiData } from '../translator/emoji'
 import { getLanguage, translateText } from '../translator/translator'
 import { getAvatarUrl } from '../utility/utils'
+import { colors } from '../utility/constants'
 
 interface TranslateCache {
     [key: string]: Array<string>
@@ -60,7 +61,7 @@ const event: BotEvent = {
         const requesterName = requesterMember ? requesterMember.displayName : user.username
 
         const embed = new EmbedBuilder()
-            .setColor(0x0099FF)
+            .setColor(colors.blue)
             .setAuthor({
                 name: reaction.message.member.displayName,
                 iconURL: getAvatarUrl(reaction.message.author.id, reaction.message.author.avatar)
