@@ -2,7 +2,7 @@ import { Result, Hero, Achievement } from './model'
 
 const achievements: Array<Achievement> = [
     {levels: [30, 40, 50, 60, 70, 80, 90, 100], quantities: [5, 10], points: 2000},
-    {levels: [30, 60, 80, 100], quantities: [15, 20, 25, 30], points: 2000},
+    {levels: [30, 60, 80, 100], quantities: [15, 20, 25, 30], points: 3000},
 ]
 
 function calculateQuantity(heroes: Array<Hero>, level: number): number {
@@ -21,27 +21,20 @@ export function calculateHeroAchievements(heroes: Array<Hero>): Array<Result> {
         {level: 100, quantity: calculateQuantity(heroes,100), totalPoints: 0},
     ]
 
-    heroes.forEach(hero => {
-        if (hero.quantity <= 0) {
+    results.forEach(result => {
+        if (result.quantity <= 0) {
             return
         }
 
         achievements.forEach(achievement => {
-            achievement.levels.forEach(level => {
-                if (level > hero.level) {
-                    return
-                }
+            if (!achievement.levels.includes(result.level)) {
+                return
+            }
 
-                const result = results.find(it => it.level === level)
-                if (!result) {
-                    return
+            achievement.quantities.forEach(quantity => {
+                if (result.quantity >= quantity) {
+                    result.totalPoints += achievement.points
                 }
-
-                achievement.quantities.forEach(quantity => {
-                    if (hero.quantity >= quantity) {
-                        result.totalPoints += achievement.points
-                    }
-                })
             })
         })
     })
